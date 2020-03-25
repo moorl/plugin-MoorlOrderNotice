@@ -9,19 +9,7 @@
         <defaults public="true" />
 
         <!-- Controller -->
-        <service id="MoorlOrderNotice\Controller\CartLineItemController">
-            <argument type="service" id="Shopware\Core\Framework\DataAbstractionLayer\Write\EntityWriter" />
-            <argument type="service" id="Shopware\Core\Checkout\Cart\SalesChannel\CartService"/>
-            <argument type="service" id="sales_channel.product.repository"/>
-            <argument type="service" id="Shopware\Core\Checkout\Promotion\Cart\PromotionItemBuilder"/>
-            <argument type="service" id="Shopware\Core\Content\Media\File\FileFetcher"/>
-            <argument type="service" id="Shopware\Core\Content\Media\File\FileSaver"/>
-            <argument type="service" id="Shopware\Core\Content\Media\File\FileNameProvider"/>
-            <argument type="service" id="Shopware\Core\Content\Media\MediaDefinition"/>
-            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
-            <argument type="service" id="media.repository"/>
-            <argument type="service" id="media_folder.repository"/>
-            <argument type="service" id="Shopware\Storefront\Page\Suggest\SuggestPageLoader"/>
+        <service id="MoorlOrderNotice\Controller\StorefrontController">
             <call method="setContainer">
                 <argument type="service" id="service_container"/>
             </call>
