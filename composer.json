@@ -1,0 +1,28 @@
+{
+    "name": "moorl/order-notice",
+    "description": "User Inputs for Orders",
+    "version": "1.0.0",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Moorleiche Web Solutions"
+        }
+    ],
+    "require": {
+        "shopware/core": "*"
+    },
+    "type": "shopware-platform-plugin",
+    "autoload": {
+        "psr-4": {
+            "MoorlOrderNotice\\": "src/"
+        }
+    },
+    "extra": {
+        "shopware-plugin-class": "MoorlOrderNotice\\MoorlOrderNotice",
+        "copyright": "(c) by Moorleiche Web Solutions",
+        "label": {
+            "de-DE": "Benutzer-Eingaben für Bestellungen",
+            "en-GB": "User Inputs for Orders"
+        }
+    }
+}

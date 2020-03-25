@@ -1,0 +1,35 @@
+{% sw_extends '@Storefront/storefront/page/checkout/confirm/index.html.twig' %}
+
+ {% block page_checkout_confirm_tos %}
+
+     {{ parent() }}
+
+     {% if shopware.config.MoorlOrderNotice.config.commentActive == true %}
+
+         <div class="confirm-tos">
+             <div class="card checkout-card">
+                 <div class="card-body">
+                     <div class="card-title">
+                         {{ "moorl-order-notice.noticeTitle"|trans }}
+                     </div>
+                     <p>
+                         {{ "moorl-order-notice.hint"|trans }}
+                     </p>
+                     <form action="{{ path('moorl.order-notice.checkout.notice') }}"
+                           method="post">
+                         {{ sw_csrf('moorl.order-notice.checkout.notice') }}
+                         <div class="row mb-1">
+                             <div class="col-6">
+                                 <textarea name="notice" class="form-control">{{ app.request.session.all['moorl-order-notice.notice'] }}</textarea>
+                             </div>
+                         </div>
+                         <button class="btn btn-primary">{{ "moorl-order-notice.save"|trans }}</button>
+                     </form>
+
+                 </div>
+             </div>
+         </div>
+
+     {% endif %}
+
+ {% endblock %}

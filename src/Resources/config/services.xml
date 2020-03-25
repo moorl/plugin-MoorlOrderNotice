@@ -1,0 +1,47 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+
+        <defaults public="true" />
+
+        <!-- Controller -->
+        <service id="MoorlOrderNotice\Controller\CartLineItemController">
+            <argument type="service" id="Shopware\Core\Framework\DataAbstractionLayer\Write\EntityWriter" />
+            <argument type="service" id="Shopware\Core\Checkout\Cart\SalesChannel\CartService"/>
+            <argument type="service" id="sales_channel.product.repository"/>
+            <argument type="service" id="Shopware\Core\Checkout\Promotion\Cart\PromotionItemBuilder"/>
+            <argument type="service" id="Shopware\Core\Content\Media\File\FileFetcher"/>
+            <argument type="service" id="Shopware\Core\Content\Media\File\FileSaver"/>
+            <argument type="service" id="Shopware\Core\Content\Media\File\FileNameProvider"/>
+            <argument type="service" id="Shopware\Core\Content\Media\MediaDefinition"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <argument type="service" id="media.repository"/>
+            <argument type="service" id="media_folder.repository"/>
+            <argument type="service" id="Shopware\Storefront\Page\Suggest\SuggestPageLoader"/>
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
+
+        <service id="MoorlOrderNotice\Subscriber\StorefrontSubscriber">
+            <argument type="service" id="Shopware\Core\Checkout\Cart\SalesChannel\CartService"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <argument type="service" id="order.repository"/>
+            <argument type="service" id="Doctrine\DBAL\Connection"/>
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+        <!-- Snippet Files -->
+        <service id="MoorlOrderNotice\Resources\snippet\de_DE\SnippetFile_de_DE" public="true">
+            <tag name="shopware.snippet.file" priority="100"/>
+        </service>
+        <service id="MoorlOrderNotice\Resources\snippet\en_GB\SnippetFile_en_GB" public="true">
+            <tag name="shopware.snippet.file" priority="100"/>
+        </service>
+
+    </services>
+</container>

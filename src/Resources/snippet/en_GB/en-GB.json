@@ -1,0 +1,8 @@
+{
+    "moorl-order-notice": {
+        "noticeTitle": "My notice for this order",
+        "hint": "Add your notice here.",
+        "save": "Save notice",
+        "noticeSaved": "Thanks, your notice has been saved!"
+    }
+}
